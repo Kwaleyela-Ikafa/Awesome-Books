@@ -19,10 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     booksArray.map((data, index) => {
       str += `
+            <div class="book">
               <p>${data[0]}</p>
               <p>${data[1]}</p>
               <button onclick='remove(${index})'>Remove</button>
-              <hr>
+            </div>
+            <hr>
           `;
         return(data);
     });

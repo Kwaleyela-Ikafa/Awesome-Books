@@ -1,0 +1,22 @@
+.book-page {
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+#books {
+    background-color: beige;
+}
+
+.book {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
