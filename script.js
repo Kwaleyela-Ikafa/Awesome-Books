@@ -1,88 +1,43 @@
-const BookData = document.querySelector('#books');
-const button = document.querySelector('#btn');
-const titleInput = document.querySelector('#title');
-const authorInput = document.querySelector('#author');
+class NewAwesomeBook{
+  constructor(title, author, id){
+    this.title = title;
+    this.author = author;
+    this.id = id;
+  }
+}
 
-
-// Fire event when the initial HTML document has been completely loaded
-document.addEventListener('DOMContentLoaded', () => {
-  let str = '';
-  let booksArray = [];
-
-  const showData = () => {
-    if (localStorage.getItem('book') === null) {
-      // let booksArray = [];
-      localStorage.setItem('book', JSON.stringify(booksArray));
-    } else {
-      let booksArrayStr = localStorage.getItem('book');
-      booksArray = JSON.parse(booksArrayStr);
-    }
-    booksArray.map((data, index) => {
-      str += `
-            <div class="book">
-              <p>${data[0]}</p>
-              <p>${data[1]}</p>
-              <button onclick='remove(${index})'>Remove</button>
-            </div>
-            <hr>
-          `;
-        return(data);
+class UserExperience{
+  static displayBook(){
+    const bookList = [{
+      title: 'The Hobbit',
+      author: 'Jk.R.R. Tolkien',
+      id: 0
+    }];
+    const book = bookList;
+    book.forEach((book) => {
+    const parent = document.getElementById('books');
+    const child = document.createElement('article');
+    child.classList.add('kitab');
+    child.innerHTML = `
+    <h3 class = "title">${book.title}</h3>
+    <p class="description">${book.author}</p>
+    <button class="btn ">Delete</button>
+    `;
+    parent.appendChild(child);
     });
-    BookData.innerHTML = str;
-  };
-
-  button.addEventListener('click', function() {
-    if(titleInput.value == '' && authorInput.value == '') {
-    alert('Please enter a title and author')
-  }else {
-      let bookTitle = titleInput.value;
-      let bookAuthor = authorInput.value;
-      if (localStorage.getItem('book') === null) {
-        let booksArray = [];
-        booksArray.push({ title: bookTitle, author: bookAuthor });
-        localStorage.setItem('book', JSON.stringify(booksArray));
-      } else {
-        let booksArrayStr = localStorage.getItem('book');
-        booksArray = JSON.parse(booksArrayStr);
-        booksArray.push([bookTitle, bookAuthor]);
-        localStorage.setItem('book', JSON.stringify(booksArray));
-      }
-      titleInput.value = '';
-      authorInput.value = '';
-      str = '';
-      BookData.innerHTML = str;
-      showData();
-    }
+  }
+  // static AddMyBook(){
+    const form = document.getElementById('btn');
+    form.addEventListener('click', (e) => {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const author = document.getElementById('author').value;
+      const id = Date.now();
+      
+      
     });
+  }
 
-    remove = (id) => {
-      let booksArrayStr = localStorage.getItem('book');
-      booksArray = JSON.parse(booksArrayStr);
-      booksArray.splice(id, 1);
-      localStorage.setItem('book', JSON.stringify(booksArray));
-      str = '';
-      BookData.innerHTML = str;
-      showData();
-    };
-  
-    showData();
-  });
+}
+  document.addEventListener('DOMContentLoaded', UserExperience.displayBook());
 
-// button.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   if(titleInput.value == '' && authorInput.value == '') {
-//     alert('Please enter a title and author')
-//   }else {
-//     const bookList = document.createElement('ul');
-
-//     const newTitle = document.createElement('li');
-//     newTitle.innerHTML = titleInput.value;
-//     bookList.appendChild(newTitle);
-
-//     const newAuthor = document.createElement('li');
-//     newAuthor.innerHTML = authorInput.value;
-//     bookList.appendChild(newAuthor);
-
-//     BookData.appendChild(bookList);
-//   }
-// })
