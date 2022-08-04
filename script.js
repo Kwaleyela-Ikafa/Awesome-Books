@@ -67,22 +67,3 @@ document.addEventListener('DOMContentLoaded', () => {
   
     showData();
   });
-
-// button.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   if(titleInput.value == '' && authorInput.value == '') {
-//     alert('Please enter a title and author')
-//   }else {
-//     const bookList = document.createElement('ul');
-
-//     const newTitle = document.createElement('li');
-//     newTitle.innerHTML = titleInput.value;
-//     bookList.appendChild(newTitle);
-
-//     const newAuthor = document.createElement('li');
-//     newAuthor.innerHTML = authorInput.value;
-//     bookList.appendChild(newAuthor);
-
-//     BookData.appendChild(bookList);
-//   }
-// })
