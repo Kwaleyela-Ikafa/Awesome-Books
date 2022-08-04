@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     booksArray.map((data, index) => {
       str += `
             <div class="book">
-              <p>${data[0]}</p>
-              <p>${data[1]}</p>
+              <p>${data.title}</p>
+              <p>${data.author}</p>
               <button onclick='remove(${index})'>Remove</button>
             </div>
             <hr>
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         let booksArrayStr = localStorage.getItem('book');
         booksArray = JSON.parse(booksArrayStr);
-        booksArray.push([bookTitle, bookAuthor]);
+        booksArray.push({ title: bookTitle, author: bookAuthor });
         localStorage.setItem('book', JSON.stringify(booksArray));
       }
       titleInput.value = '';
